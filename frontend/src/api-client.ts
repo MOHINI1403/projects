@@ -20,5 +20,18 @@ export const register=async(formData:RegisterFormData)=>{
         //console.log("juicy",responseBody.message);
     }
 }
+
+export const validateToken=async()=>{
+    const response=await fetch(`${API_BASE_URL}/api/auth/validate-token`,{
+        method:"GET",
+        credentials:"include",
+    })
+    //const responseBodyy=await response.json();
+    if(!response.ok){
+        throw new Error("Token invalid");
+        //console.log(responseBodyy.message);
+    }
+    return response.json();
+}
 // API_BASE_URL: comes from the dotenv there it contains the port on which the server is running 
 
