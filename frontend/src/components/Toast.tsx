@@ -12,7 +12,7 @@ const Toast=({message,type,onClose}:ToastProps)=>{
     useEffect(()=>{
         const timer=setTimeout(()=>{
             onClose();//This is called when the timer is expired indicating that the Toast should be hide now 
-        },50000);
+        },5000);
         return ()=>{
             clearTimeout(timer);//A type of cleanup function of the effect to clear he timer when the component unmounts .
         }
