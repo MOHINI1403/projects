@@ -26,7 +26,7 @@ export const AppContextProvider=({children}:{children:React.ReactNode})=>{
             showToast:(toastMessage)=>{
                 setToast(toastMessage);
             },
-            isLoggedIn: !isError
+            isLoggedIn: !isError,
             }}>
 
             {toast && (<Toast message={toast.message} type={toast.type} onClose={()=>setToast(undefined)}/>)}
