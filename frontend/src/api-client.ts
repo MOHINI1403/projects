@@ -43,7 +43,7 @@ export const signIn=async(FormData:SignInFormData)=>{
 }
 
 // Error
-/*export const validateToken=async()=>{
+export const validateToken=async()=>{
     const response=await fetch(`${API_BASE_URL}/api/auth/validate-token`,{
         method:"GET",
         credentials:"include",
@@ -54,7 +54,7 @@ export const signIn=async(FormData:SignInFormData)=>{
         //console.log(responseBodyy.message);
     }
     return response.json();
-}*/
+}
 
 export const signOut=async()=>{
     const response=await fetch(`${API_BASE_URL}/api/auth/logout`,{
