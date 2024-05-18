@@ -5,8 +5,15 @@ import express from "express";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/users";
-
-mongoose.connect(process.env.MONGO_CONNECTION_STRING as string);
+import path = require("path");
+mongoose
+  .connect(process.env.MONGO_CONNECTION_STRING as string)
+  .then(() =>
+    console.log(
+      "Connected to database: ",
+      process.env.MONGO_CONNECTION_STRING
+    )
+  );
 
 const app = express();
 app.use(cookieParser());
@@ -18,6 +25,7 @@ app.use(
     credentials: true,
   })
 );
+app.use(express.static(path.join(__dirname,"../../frontend/dist")));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
