@@ -6,10 +6,11 @@ const GuestsSection = () => {
     register,
     formState: { errors },
   } = useFormContext<HotelFormData>();
+
   return (
     <div>
       <h2 className="text-2xl font-bold mb-3">Guests</h2>
-      <div className="grid grid-cols-2 p-6 gap-5 bg-gray-200">
+      <div className="grid grid-cols-2 p-6 gap-5 bg-gray-300">
         <label className="text-gray-700 text-sm font-semibold">
           Adults
           <input
@@ -17,34 +18,34 @@ const GuestsSection = () => {
             type="number"
             min={1}
             {...register("adultCount", {
-              required: "This field is required !",
+              required: "This field is required",
             })}
           />
-          {errors.adultCount?.message&&(
-          <span className="text-red-500 text-sm font-bold">
-            {errors.adultCount?.message}
-          </span>
+          {errors.adultCount?.message && (
+            <span className="text-red-500 text-sm fold-bold">
+              {errors.adultCount?.message}
+            </span>
           )}
         </label>
-
         <label className="text-gray-700 text-sm font-semibold">
-          Childs
+          Children
           <input
             className="border rounded w-full py-2 px-3 font-normal"
             type="number"
-            min={1}
-            {...register("childcount", {
-              required: "This field is required !",
+            min={0}
+            {...register("childCount", {
+              required: "This field is required",
             })}
           />
-          {errors.childcount?.message&&(
-          <span className="text-red-500 text-sm font-bold">
-            {errors.childcount?.message}
-          </span>
+          {errors.childCount?.message && (
+            <span className="text-red-500 text-sm fold-bold">
+              {errors.childCount?.message}
+            </span>
           )}
         </label>
       </div>
     </div>
   );
 };
+
 export default GuestsSection;
