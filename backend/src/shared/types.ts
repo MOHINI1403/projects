@@ -13,7 +13,7 @@ export type HotelType = {
   city: string;
   country: string;
   description: string;
-  type: string;
+  type: string[];
   adultCount: number;
   childCount: number;
   facilities: string[];

@@ -9,7 +9,7 @@ const TypeSection = () => {
     formState: { errors },
   } = useFormContext<HotelFormData>();
 
-  const typeWatch = watch("type");
+  const typesWatch = watch("types") || [];
 
   return (
     <div>
@@ -17,17 +17,19 @@ const TypeSection = () => {
       <div className="grid grid-cols-5 gap-2">
         {hotelTypes.map((type) => (
           <label
+            key={type}
             className={
-              typeWatch === type
+              typesWatch.includes(type)
                 ? "cursor-pointer bg-blue-300 text-sm rounded-full px-4 py-2 font-semibold"
                 : "cursor-pointer bg-gray-300 text-sm rounded-full px-4 py-2 font-semibold"
             }
           >
             <input
-              type="radio"
+              type="checkbox"
               value={type}
-              {...register("type", {
-                required: "This field is required",
+              {...register("types", {
+                validate: (value) =>
+                  value.length > 0 || "At least one type must be selected",
               })}
               className="hidden"
             />
@@ -35,9 +37,9 @@ const TypeSection = () => {
           </label>
         ))}
       </div>
-      {errors.type && (
+      {errors.types && (
         <span className="text-red-500 text-sm font-bold">
-          {errors.type.message}
+          {errors.types.message}
         </span>
       )}
     </div>

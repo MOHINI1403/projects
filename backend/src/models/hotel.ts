@@ -7,7 +7,7 @@ const hotelSchema = new mongoose.Schema<HotelType>({
   city: { type: String, required: true },
   country: { type: String, required: true },
   description: { type: String, required: true },
-  type: { type: String, required: true },
+  type: { type: [], required: true },
   adultCount: { type: Number, required: true },
   childCount: { type: Number, required: true },
   facilities: [{ type: String, required: true }],

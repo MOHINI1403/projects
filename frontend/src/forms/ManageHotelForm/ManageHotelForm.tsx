@@ -10,7 +10,7 @@ export type HotelFormData = {
   city: string;
   country: string;
   description: string;
-  type: string;
+  types: string[]; // Modify the property name to "types" and make it an array of strings
   pricePerNight: number;
   starRating: number;
   facilities: string[];
